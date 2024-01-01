@@ -29,11 +29,11 @@ public partial class HXJTViewModel : ObservableObject
         if (this.ActivitiesCollection != null)
         {
 
-            var list =
+            var list =(
                 from activity in ActivitiesCollection
                 where activity.AcademicName.StartsWith("“虹”学讲堂")
                 orderby activity.AcademicStarttime descending
-                select activity;
+                select activity).ToList();
 
 
             

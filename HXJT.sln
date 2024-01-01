@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HXJT", "HXJT.csproj", "{EE302F7F-B24C-423F-A431-D3905B7D7C17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE302F7F-B24C-423F-A431-D3905B7D7C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE302F7F-B24C-423F-A431-D3905B7D7C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE302F7F-B24C-423F-A431-D3905B7D7C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE302F7F-B24C-423F-A431-D3905B7D7C17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {250AF29A-A515-434B-842F-765E545140C6}
+	EndGlobalSection
+EndGlobal

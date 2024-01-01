@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HXJT.Views.UserControl;
+namespace HXJT.UserControls;
 /// <summary>
 /// HXJTButton.xaml 的交互逻辑
 /// </summary>

@@ -33,8 +33,9 @@
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
             VirtualizingPanel.ScrollUnit="Pixel"
             ItemsSource="{Binding ViewModel.ActivitiesCollectionShow, Mode=OneWay}"
-            VirtualizingPanel.CacheLengthUnit="Item">
-            <ItemsControl.ItemTemplate>
+            VirtualizingPanel.CacheLengthUnit="Item"
+            ItemTemplate="{StaticResource HXJTButtonItemTemplate}">
+            <!--<ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:AcademicActivity}">
                     <ui:Button
                         Width="300"
@@ -59,7 +60,7 @@
                         </StackPanel>
                     </ui:Button>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
+            </ItemsControl.ItemTemplate>-->
         </ui:VirtualizingItemsControl>
     </Grid>
 </Page>

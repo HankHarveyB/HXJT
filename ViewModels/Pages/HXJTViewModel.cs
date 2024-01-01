@@ -21,7 +21,7 @@ public partial class HXJTViewModel : ObservableObject
         this.ActivitiesJson = HTTPHelper.JsonToActivityList(json);
         this.ActivitiesCollection = new ObservableCollection<AcademicActivity>(HTTPHelper.GetAcademicActivitiesList(json));
         this.ActivitiesCollectionShow = this.ActivitiesCollection;
-    }
+    }  
 
     [RelayCommand]
     private void ShowHXJT()
@@ -33,7 +33,7 @@ public partial class HXJTViewModel : ObservableObject
                 from activity in ActivitiesCollection
                 where activity.AcademicName.StartsWith("“虹”学讲堂")
                 orderby activity.AcademicStarttime descending
-                select activity).ToList();
+                select activity);
 
 
             

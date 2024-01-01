@@ -31,8 +31,9 @@
         <ui:VirtualizingItemsControl 
             Grid.Column="1"
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+            VirtualizingPanel.ScrollUnit="Pixel"
             ItemsSource="{Binding ViewModel.ActivitiesCollectionShow, Mode=OneWay}"
-            VirtualizingPanel.CacheLengthUnit="Pixel">
+            VirtualizingPanel.CacheLengthUnit="Item">
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:AcademicActivity}">
                     <ui:Button

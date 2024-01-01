@@ -36,27 +36,7 @@ public partial class HXJTViewModel : ObservableObject
                 select activity;
 
 
-            //var list = this.ActivitiesCollection
-            //               .Where(activity => activity.AcademicName.StartsWith("“虹”学讲堂"))
-            //               .OrderByDescending(activity => activity.AcademicStarttime)
-            //               .ToList();
-
-
-            //List<AcademicActivity> list = new List<AcademicActivity>();
-
-            //foreach (var activity in ActivitiesCollection)
-            //{
-            //    if (activity.AcademicName.StartsWith("“虹”学讲堂"))
-            //    {
-            //        list.Add(activity);
-            //    }
-            //}
-            //// 手动实现降序排序， AcademicStarttime 是表示日期时间的字符串
-            //list.Sort((activity1, activity2) =>
-            //DateTime.ParseExact(activity2.AcademicStarttime, "yyyy-MM-dd HH:mm:ss", null)
-            //        .CompareTo(DateTime.ParseExact(
-            //            activity1.AcademicStarttime,
-            //            "yyyy-MM-dd HH:mm:ss", null)));
+            
 
             this.ActivitiesCollectionShow = new ObservableCollection<AcademicActivity>(list);
         }

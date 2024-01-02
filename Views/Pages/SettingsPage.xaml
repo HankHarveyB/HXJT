@@ -47,5 +47,9 @@
             FontWeight="Medium"
             Text="About HXJT" />
         <TextBlock Margin="0,12,0,0" Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
+        <TextBlock FontFamily="Comic Sans MS" FontStyle="Italic" Text="韩鸿博" />
+        <TextBlock FontFamily="Comic Sans MS" FontStyle="Italic" Text="2023132003" />
+        <TextBlock FontFamily="Comic Sans MS" FontStyle="Italic" Text="长安大学" />
+        <TextBlock FontFamily="Comic Sans MS" FontStyle="Italic" Text="电控学院" />
     </StackPanel>
 </Page>

@@ -28,7 +28,7 @@ public partial class Clock : UserControl
         InitializeComponent();
 
         // 初始化并启动 Timer
-        timer = new System.Timers.Timer(1000); // 1000 毫秒即 1 秒
+        timer = new System.Timers.Timer(100); // 1000 毫秒即 1 秒
         timer.Elapsed += Timer_Elapsed;
         timer.AutoReset = true;
         timer.Start();

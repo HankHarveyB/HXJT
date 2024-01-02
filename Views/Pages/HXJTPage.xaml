@@ -24,43 +24,17 @@
         <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <usercontrols:Clock FontSize="29"/>
             <ui:Button FontSize="20" Content="获取所有活动" Command="{Binding Path=ViewModel.SetActivitiesJsonCommand}" HorizontalAlignment="Center" Margin="5"/>
-            <ui:Button FontSize="20" Content="只显示虹学讲堂" Command="{Binding Path=ViewModel.ShowHXJTCommand}" HorizontalAlignment="Center" Margin="5"/>
-            
+            <ui:Button FontSize="20" Content="显示虹学讲堂" Command="{Binding Path=ViewModel.ShowHXJTCommand}" HorizontalAlignment="Center" Margin="5"/>
+
         </StackPanel>
-        <!--<TextBlock Text="{Binding Path=ViewModel.ActivitiesJson}" Grid.Column="1" />-->
         <ui:VirtualizingItemsControl 
             Grid.Column="1"
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
             VirtualizingPanel.ScrollUnit="Pixel"
             ItemsSource="{Binding ViewModel.ActivitiesCollectionShow, Mode=OneWay}"
             VirtualizingPanel.CacheLengthUnit="Item"
+            CacheLengthUnit="Item"
             ItemTemplate="{StaticResource HXJTButtonItemTemplate}">
-            <!--<ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type models:AcademicActivity}">
-                    <ui:Button
-                        Width="300"
-                        Height="300"
-                        Margin="8"
-                        Padding="0"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch"
-                        Appearance="Secondary"
-                        FontSize="25"
-                        Icon="Fluent24" >
-                        <StackPanel>
-                            <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=AcademicName}"/>
-                            <WrapPanel>
-                                <TextBlock Text="抢票时间:"/>
-                            <TextBlock Text="{Binding Path=AcademicTicketStarttime}"/>
-                            </WrapPanel>
-                            <WrapPanel>
-                                <TextBlock Text="ID:"/>
-                                <TextBlock Text="{Binding Path=Id}"/>
-                            </WrapPanel>
-                        </StackPanel>
-                    </ui:Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>-->
         </ui:VirtualizingItemsControl>
     </Grid>
 </Page>

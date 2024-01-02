@@ -11,7 +11,7 @@ namespace HXJT.ViewModels.Windows;
 public partial class MainWindowViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _applicationTitle = "WPF UI - HXJT";
+    private string _applicationTitle = "学术活动";
 
     [ObservableProperty]
     private ObservableCollection<object> _menuItems = new()

@@ -7,7 +7,9 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using HXJT.Services;
+using HXJT.UserControls;
 using HXJT.ViewModels.Pages;
+using HXJT.ViewModels.UserControls;
 using HXJT.ViewModels.Windows;
 using HXJT.Views.Pages;
 using HXJT.Views.Windows;
@@ -47,8 +49,10 @@ public partial class App
             services.AddTransient<SigninViewModel>();
             //services.AddSingleton<DataPage>();
             //services.AddSingleton<DataViewModel>();
-            services.AddSingleton<SettingsPage>();
-            services.AddSingleton<SettingsViewModel>();
+            services.AddTransient<SettingsPage>();
+            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<Clock>();
+            services.AddTransient<ClockViewModel>();
         }).Build();
 
     /// <summary>

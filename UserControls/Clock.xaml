@@ -6,12 +6,15 @@
              xmlns:local="clr-namespace:HXJT.UserControls"
              mc:Ignorable="d" 
              FontSize="24"
+             d:DataContext="{d:DesignInstance local:Clock}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel>
 
+            <TextBlock Text="{Binding Path=ViewModel.Date}" x:Name="DateTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"/>
             <TextBlock x:Name="dateTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"/>
             <TextBlock x:Name="timeTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"/>
+            <TextBlock Text="{Binding Path=ViewModel.Time}" x:Name="TimeTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"/>
         </StackPanel>
     </Grid>
 </UserControl>

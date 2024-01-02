@@ -37,23 +37,42 @@ public partial class HXJTButton : UserControl
     /// </summary>
     /// <param name="title"></param>
     /// <param name="info"></param>
-    private void ShowResult(string title,string info)
+    private void ShowResult(string title,string info,Boolean IsSuccess)
     {
-        _snackbarService.Show(
-            title,
-            info,
-            ControlAppearance.Secondary,
-            new SymbolIcon(SymbolRegular.Fluent24),
-            TimeSpan.FromSeconds(2)
-        );
+        var appearance = IsSuccess ? ControlAppearance.Success : ControlAppearance.Caution;
+        Dispatcher.InvokeAsync(
+            () => {
+                        _snackbarService.Show(
+                        title,
+                        info,
+                        appearance,
+                        new SymbolIcon(SymbolRegular.Fluent24),
+                        TimeSpan.FromSeconds(1)
+                        );
+
+                  }
+            );
+        
     }
     
     private async void Button_Click(object sender, RoutedEventArgs e)
     {
-        
-            var result = await HTTPHelper.AddTicket((this.DataContext as AcademicActivity)!.Id);
-        ShowResult("result", result);
 
-        
+        var result = await HTTPHelper.AddTicket((this.DataContext as AcademicActivity)!.Id);
+        if (result.Contains("已报名") || result.Contains("成功"))
+        {
+        ShowResult("报名结果", result,true);
+        }
+        else
+        {
+            ShowResult("报名结果", result, false);
+        }
+        // Task.Run(async () =>
+        //{
+        //    var result = await HTTPHelper.AddTicket((this.DataContext as AcademicActivity)!.Id)!;
+        //    ShowResult("result", result);
+
+        //});
+
     }
 }

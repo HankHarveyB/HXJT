@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using HXJT.Models;
 using HXJT.Resources;
 using Newtonsoft.Json;
@@ -136,10 +137,21 @@ public class HTTPHelper
 
             // 发起POST请求
             HttpResponseMessage response = await client.PostAsync("http://xshd.chd.edu.cn/teunk/project/academicregistration/add", content);
+            
+            var responseString = await response.Content.ReadAsStringAsync();
+            string msgPattern = "\"msg\":\"(.*?)\"";
+            Match match = Regex.Match(responseString, msgPattern);
 
-
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+            else
+            {
+                return "未匹配到正确的msg";
+            }
             // 处理响应
-            return await response.Content.ReadAsStringAsync();
+            //return await response.Content.ReadAsStringAsync();
         }
     }
 }

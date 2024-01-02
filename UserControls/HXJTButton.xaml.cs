@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HXJT.Helpers;
 using HXJT.Models;
+using HXJT.Resources;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 
@@ -28,6 +32,11 @@ public partial class HXJTButton : UserControl
         InitializeComponent();
         this._snackbarService = App.GetService<ISnackbarService>();
     }
+    /// <summary>
+    /// 弹窗提示结果
+    /// </summary>
+    /// <param name="title"></param>
+    /// <param name="info"></param>
     private void ShowResult(string title,string info)
     {
         _snackbarService.Show(
@@ -38,8 +47,13 @@ public partial class HXJTButton : UserControl
             TimeSpan.FromSeconds(2)
         );
     }
-    private void Button_Click(object sender, RoutedEventArgs e)
+    
+    private async void Button_Click(object sender, RoutedEventArgs e)
     {
-        ShowResult("抢票结果",(DataContext as AcademicActivity).AcademicName);
+        
+            var result = await HTTPHelper.AddTicket((this.DataContext as AcademicActivity)!.Id);
+        ShowResult("result", result);
+
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Security.Cryptography;
+using System.Text;
 using HXJT.Models;
 using HXJT.Resources;
 using Newtonsoft.Json;
@@ -99,6 +100,46 @@ public class HTTPHelper
         {
 
             return "error";
+        }
+    }
+
+    public static async Task<string> AddTicket(int id)
+    {
+        using (HttpClient client = new HttpClient())
+        {
+            // 构造请求头
+            client.DefaultRequestHeaders.Add("Accept", "application/json, text/plain, */*");
+            client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");
+            client.DefaultRequestHeaders.Add("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6");
+            client.DefaultRequestHeaders.Add("Authorization", UserInfo.Authorization);
+            client.DefaultRequestHeaders.Add("Connection", "keep-alive");   
+            client.DefaultRequestHeaders.Add("DNT", "1");
+            client.DefaultRequestHeaders.Add("Host", "xshd.chd.edu.cn");
+            client.DefaultRequestHeaders.Add("Origin", "http://xshd.chd.edu.cn");
+            client.DefaultRequestHeaders.Add("Referer", "http://xshd.chd.edu.cn");
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0");
+            client.DefaultRequestHeaders.Add("Cookie", "hb_MA-B701-2FC93ACD9328_source=entryhz.qiye.163.com");
+
+            var formData = new Dictionary<string, string>
+            {
+                {"academicId", id.ToString()},
+                //{"userId", "2023132003"},
+                //{"userName", "1111111111111111111111111%E9%9F%A9%E9%B8%BF%E5%8D%9A"},
+                //{"userCollege", "%E7%94%B5%E6%8E%A7%E5%AD%A6%E9%99%A2"},
+                //{"userGrade", "2023"},
+                //{"registrationTime", "2024-1-2%2011%3A17%3A10"},
+                //{"useState", "0"},
+                {"token", UserInfo.Authorization!}
+            };
+
+            var content = new FormUrlEncodedContent(formData);
+
+            // 发起POST请求
+            HttpResponseMessage response = await client.PostAsync("http://xshd.chd.edu.cn/teunk/project/academicregistration/add", content);
+
+
+            // 处理响应
+            return await response.Content.ReadAsStringAsync();
         }
     }
 }

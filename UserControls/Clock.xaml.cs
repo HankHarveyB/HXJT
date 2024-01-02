@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Timers;
 
 namespace HXJT.UserControls;
 /// <summary>
@@ -20,29 +21,36 @@ namespace HXJT.UserControls;
 /// </summary>
 public partial class Clock : UserControl
 {
-    private DispatcherTimer timer;
+    private System.Timers.Timer timer;
+
     public Clock()
     {
         InitializeComponent();
-        // 初始化并启动 DispatcherTimer
-        timer = new DispatcherTimer();
-        timer.Interval = TimeSpan.FromSeconds(1);
-        timer.Tick += Timer_Tick;
+
+        // 初始化并启动 Timer
+        timer = new System.Timers.Timer(1000); // 1000 毫秒即 1 秒
+        timer.Elapsed += Timer_Elapsed;
+        timer.AutoReset = true;
         timer.Start();
 
         // 初次显示实时时间
         UpdateTime();
     }
-    private void Timer_Tick(object sender, EventArgs e)
+
+    private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
-        // 每秒触发一次的事件处理程序
+        // 定时触发的事件处理程序
         UpdateTime();
     }
 
     private void UpdateTime()
     {
-        // 获取当前时间并显示在 TextBlock 中
-        dateTextBlock.Text = DateTime.Now.ToString("yyyy-MM-dd");
-        timeTextBlock.Text = DateTime.Now.ToString("HH:mm:ss");
+        // 使用 Dispatcher 更新 UI
+        Dispatcher.Invoke(() =>
+        {
+            // 获取当前时间并显示在 TextBlock 中
+            dateTextBlock.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            timeTextBlock.Text = DateTime.Now.ToString("HH:mm:ss");
+        });
     }
 }

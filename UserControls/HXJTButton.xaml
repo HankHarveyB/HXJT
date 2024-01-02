@@ -21,7 +21,8 @@
     VerticalAlignment="Stretch"
     Appearance="Secondary"
     FontSize="25"
-    Icon="Fluent24" >
+    Icon="Fluent24"
+         Click="Button_Click">
         <StackPanel>
             <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=AcademicName}"/>
             <WrapPanel>

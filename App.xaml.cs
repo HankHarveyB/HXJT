@@ -41,18 +41,16 @@ public partial class App
             services.AddSingleton<ISnackbarService, SnackbarService>();
             services.AddSingleton<IContentDialogService, ContentDialogService>();
 
-            //services.AddSingleton<DashboardPage>();
-            //services.AddSingleton<DashboardViewModel>();
             services.AddSingleton<HXJTPage>();
             services.AddSingleton<HXJTViewModel>();
             services.AddTransient<SigninPage>();
             services.AddTransient<SigninViewModel>();
-            //services.AddSingleton<DataPage>();
-            //services.AddSingleton<DataViewModel>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<Clock>();
             services.AddTransient<ClockViewModel>();
+            services.AddTransient<HXJTButton>();
+            services.AddTransient<HXJTButtonViewModel>();
         }).Build();
 
     /// <summary>

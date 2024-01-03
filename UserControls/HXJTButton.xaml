@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HXJT.UserControls"
-                   xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-                   xmlns:models="clr-namespace:HXJT.Models"
- ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
- ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
- Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:vm="clr-namespace:HXJT.ViewModels.UserControls"
+             ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+             ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=models:AcademicActivity}"
+             d:DataContext="{d:DesignInstance Type=vm:HXJTButtonViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <ui:Button
     Width="300"
@@ -22,16 +22,16 @@
     Appearance="Secondary"
     FontSize="25"
     Icon="Fluent24"
-         Click="Button_Click">
+         Command="{Binding Path=askForTicketCommand}">
         <StackPanel>
-            <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=AcademicName}"/>
+            <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=AcademicActivity.AcademicName}"/>
             <WrapPanel>
                 <TextBlock Text="抢票时间:"/>
-                <TextBlock Text="{Binding Path=AcademicTicketStarttime}"/>
+                <TextBlock Text="{Binding Path=AcademicActivity.AcademicStarttime}"/>
             </WrapPanel>
             <WrapPanel>
                 <TextBlock Text="ID:"/>
-                <TextBlock Text="{Binding Path=Id}"/>
+                <TextBlock Text="{Binding Path=AcademicActivity.Id}"/>
             </WrapPanel>
         </StackPanel>
     </ui:Button>

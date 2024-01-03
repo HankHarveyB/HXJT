@@ -31,7 +31,7 @@
             Grid.Column="1"
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
             VirtualizingPanel.ScrollUnit="Pixel"
-            ItemsSource="{Binding ViewModel.ActivitiesCollectionShow, Mode=OneWay}"
+            ItemsSource="{Binding ViewModel.HXJTButtonViewModels, Mode=OneWay}"
             VirtualizingPanel.CacheLengthUnit="Item"
             CacheLengthUnit="Item"
             ItemTemplate="{StaticResource HXJTButtonItemTemplate}">

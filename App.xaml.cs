@@ -43,14 +43,15 @@ public partial class App
 
             services.AddSingleton<HXJTPage>();
             services.AddSingleton<HXJTViewModel>();
-            services.AddTransient<SigninPage>();
-            services.AddTransient<SigninViewModel>();
+            //services.AddTransient<SigninPage>();
+            //services.AddTransient<SigninViewModel>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<Clock>();
             services.AddTransient<ClockViewModel>();
             services.AddTransient<HXJTButton>();
             services.AddTransient<HXJTButtonViewModel>();
+            services.AddTransient<SignInWindow>();
         }).Build();
 
     /// <summary>

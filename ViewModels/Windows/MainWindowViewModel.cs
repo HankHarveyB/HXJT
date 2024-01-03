@@ -28,12 +28,12 @@ public partial class MainWindowViewModel : ObservableObject
         //    Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
         //    TargetPageType = typeof(Views.Pages.DataPage)
         //},
-        new NavigationViewItem()
-        {
-            Content="Signin",
-            Icon = new SymbolIcon {Symbol = SymbolRegular.GlobeAdd20},
-            TargetPageType=typeof(Views.Pages.SigninPage)
-        },
+        //new NavigationViewItem()
+        //{
+        //    Content="Signin",
+        //    Icon = new SymbolIcon {Symbol = SymbolRegular.GlobeAdd20},
+        //    TargetPageType=typeof(Views.Pages.SigninPage)
+        //},
         new NavigationViewItem()
         {
             Content="虹学讲堂",
@@ -53,9 +53,9 @@ public partial class MainWindowViewModel : ObservableObject
         }
     };
 
-    [ObservableProperty]
-    private ObservableCollection<MenuItem> _trayMenuItems = new()
-    {
-        new MenuItem { Header = "Home", Tag = "tray_home" }
-    };
+    //[ObservableProperty]
+    //private ObservableCollection<MenuItem> _trayMenuItems = new()
+    //{
+    //    new MenuItem { Header = "Home", Tag = "tray_home" }
+    //};
 }

@@ -31,26 +31,27 @@ public partial class HXJTButtonViewModel : ObservableObject
     private async Task askForTicket()
     {
         var isSuccess = false;
-        var result="";
+        var result = "";
         //ShowResult("正在抢票···", "", true);
         int i;
-        for (i = 1; i <= 3; i++)
+        for (i = 0; i < 10; i++)
         {
 
-            result = await HTTPHelper.AddTicket(this.AcademicActivity!.Id); ;
+            result = await HTTPHelper.AddTicket(this.AcademicActivity!.Id);
             if (result.Contains("已报名") || result.Contains("成功"))
             {
                 isSuccess = true;
+                i++;
                 break;
             }
         }
         if (isSuccess)
         {
-            ShowResult(result!, "共发起了" + i + "次请求", true);
+            ShowResult(result!, "共发起了" + (i) + "次抢票请求", true);
         }
         else
         {
-            ShowResult(result!, "共发起了" + i + "次请求", false);
+            ShowResult(result!, "共发起了" + (i) + "次抢票请求", false);
         }
 
 

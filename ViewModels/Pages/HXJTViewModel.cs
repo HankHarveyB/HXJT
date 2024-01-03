@@ -2,6 +2,7 @@
 using HXJT.Helpers;
 using HXJT.Models;
 using HXJT.ViewModels.UserControls;
+using HXJT.Views.Windows;
 
 namespace HXJT.ViewModels.Pages;
 public partial class HXJTViewModel : ObservableObject
@@ -16,7 +17,11 @@ public partial class HXJTViewModel : ObservableObject
     //private ObservableCollection<AcademicActivity>? activitiesCollectionShow;//要显示在前台的学术活动
     [ObservableProperty]
     private ObservableCollection<HXJTButtonViewModel>? hXJTButtonViewModels;//要显示在前台的学术活动
-
+    [RelayCommand]
+    private void ShowSignInWindow()
+    {
+        App.GetService<SignInWindow>().Show();
+    }
 
     [RelayCommand]
     private async void SetActivitiesJson()

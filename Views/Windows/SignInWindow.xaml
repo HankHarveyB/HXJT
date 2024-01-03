@@ -1,0 +1,46 @@
+﻿<ui:FluentWindow 
+        x:Class="HXJT.Views.Windows.SignInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:HXJT.ViewModels.Windows"
+        xmlns:wv="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        Title="SandboxWindow"
+        Width="1450"
+        Height="802"
+        MinWidth="900"
+        d:DesignHeight="650"
+        d:DesignWidth="1000"
+        ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+        ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+        ExtendsContentIntoTitleBar="True"
+        WindowBackdropType="Mica"
+        WindowCornerPreference="Default"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d">
+    <StackPanel>
+
+        <ui:TitleBar
+            CloseClicked="TitleBar_CloseClicked"
+            x:Name="TitleBar"
+            Title="请在登录成功后关闭该窗口"
+            Margin="0"
+            CloseWindowByDoubleClickOnIcon="True">
+            <ui:TitleBar.Icon>
+                <ui:SymbolIcon Symbol="CommentEdit24"/>
+            </ui:TitleBar.Icon>
+            </ui:TitleBar>
+            <Grid Height="580">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <wv:WebView2  x:Name="webview" Grid.Column="0" Source="http://xshd.chd.edu.cn/#/"/>
+                <ui:TextBlock Grid.Column="1" x:Name="textbox"/>
+            </Grid>
+       
+         
+    </StackPanel>
+</ui:FluentWindow>

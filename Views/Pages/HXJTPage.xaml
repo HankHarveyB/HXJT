@@ -23,6 +23,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
             <usercontrols:Clock FontSize="29"/>
+            <ui:Button Width="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}, Path=Width}" FontSize="20" Content="登录" Command="{Binding Path=ViewModel.ShowSignInWindowCommand}" HorizontalAlignment="Center" Margin="5"/>
             <ui:Button FontSize="20" Content="获取所有活动" Command="{Binding Path=ViewModel.SetActivitiesJsonCommand}" HorizontalAlignment="Center" Margin="5"/>
             <ui:Button FontSize="20" Content="显示虹学讲堂" Command="{Binding Path=ViewModel.ShowHXJTCommand}" HorizontalAlignment="Center" Margin="5"/>
 

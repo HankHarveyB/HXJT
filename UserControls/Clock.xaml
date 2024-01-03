@@ -12,8 +12,6 @@
         <StackPanel>
 
             <TextBlock Text="{Binding Path=ViewModel.Date}" x:Name="DateTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"/>
-            <TextBlock x:Name="dateTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"/>
-            <TextBlock x:Name="timeTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"/>
             <TextBlock Text="{Binding Path=ViewModel.Time}" x:Name="TimeTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"/>
         </StackPanel>
     </Grid>

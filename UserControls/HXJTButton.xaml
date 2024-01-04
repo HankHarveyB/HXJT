@@ -22,7 +22,7 @@
     Appearance="Secondary"
     FontSize="25"
     Icon="Fluent24"
-         Command="{Binding Path=askForTicketCommand}">
+         Command="{Binding Path=AskForTicketMultiThreadCommand}">
         <StackPanel>
             <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Path=AcademicActivity.AcademicName}"/>
             <WrapPanel>

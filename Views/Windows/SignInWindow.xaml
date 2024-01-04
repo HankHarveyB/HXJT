@@ -38,7 +38,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <wv:WebView2  x:Name="webview" Grid.Column="0" Source="http://xshd.chd.edu.cn/#/"/>
-                <ui:TextBlock Grid.Column="1" x:Name="textbox"/>
+                <ui:TextBlock TextWrapping="Wrap" Grid.Column="1" x:Name="textbox"/>
             </Grid>
        
          

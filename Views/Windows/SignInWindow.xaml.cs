@@ -55,7 +55,7 @@ public partial class SignInWindow : FluentWindow
             {
                 this.textbox.Text += ("获取到了授权信息：" + Authorization + "\n");
                 UserInfo.Authorization = Authorization;
-                this.textbox.Text += "成功设置授权信息\n";
+                this.textbox.Text += "成功设置授权信息\n请关闭该窗口";
                 //webview.Stop();
                 //webview.Dispose();
                 //webview.Visibility = Visibility.Collapsed;

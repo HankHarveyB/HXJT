@@ -71,16 +71,18 @@
                 VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Top"
-                ClickMode="Hover">
-                <TextBlock
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Text="{Binding Path=ViewModel.Result}" />
-            </ui:CardControl>
+                ClickMode="Hover" />
+            <TextBlock
+                Grid.Row="1"
+                Margin="0,5,5,10"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Text="{Binding Path=ViewModel.Result}"
+                TextWrapping="Wrap" />
         </Grid>
         <ui:CardControl
             Grid.Column="1"
-            Margin="5,10,10,10"
+            Margin="8,13,10,10"
             VerticalAlignment="Stretch"
             ClickMode="Hover" />
         <ui:VirtualizingItemsControl
@@ -88,11 +90,9 @@
             Margin="5,10,10,10"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            CacheLengthUnit="Item"
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"
             ItemTemplate="{StaticResource HXJTButtonItemTemplate}"
             ItemsSource="{Binding ViewModel.HXJTButtonViewModels, Mode=OneWay}"
-            VirtualizingPanel.CacheLengthUnit="Item"
             VirtualizingPanel.ScrollUnit="Pixel" />
     </Grid>
 </Page>

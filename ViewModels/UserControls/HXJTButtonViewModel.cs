@@ -42,7 +42,7 @@ public partial class HXJTButtonViewModel : ObservableRecipient
             var result = "";
             //ShowResult("正在抢票···", "", true);
             int i;
-            for (i = 0; i < 1; i++)
+            for (i = 0; i < 4; i++)
             {
 
                 result =  HTTPHelper.AddTicket(this.AcademicActivity!.Id).Result;
@@ -55,17 +55,18 @@ public partial class HXJTButtonViewModel : ObservableRecipient
             }
             if (isSuccess)
             {
-                WeakReferenceMessenger.Default.Send<AskTicketResultMessage>(new AskTicketResultMessage(result));
+                WeakReferenceMessenger.Default.Send<AskTicketResultMessage>(new AskTicketResultMessage(this.AcademicActivity.AcademicName+'\n'+result+'\n'+"共发起了" + (i) + "次抢票请求"));
                 //show(result!, "共发起了" + (i) + "次抢票请求", true);
             }
             else
             {
-                WeakReferenceMessenger.Default.Send<AskTicketResultMessage>(new AskTicketResultMessage(result));
+                WeakReferenceMessenger.Default.Send<AskTicketResultMessage>(new AskTicketResultMessage(this.AcademicActivity.AcademicName + '\n' + result + '\n' + "共发起了" + (i) + "次抢票请求"));
                 //show(result!, "共发起了" + (i) + "次抢票请求", false);
             }
         });
 
     }
+    [Obsolete]
     [RelayCommand]
     private async Task askForTicket()
     {

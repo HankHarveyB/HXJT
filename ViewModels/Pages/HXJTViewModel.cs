@@ -10,6 +10,8 @@ namespace HXJT.ViewModels.Pages;
 public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketResultMessage>
 {
     [ObservableProperty]
+    private bool isNeedTiming = false;
+    [ObservableProperty]
     private string result = "";
     [ObservableProperty]
     private string? activitiesJson;

@@ -31,11 +31,12 @@
             <ui:CardControl
                 Grid.Row="0"
                 MinWidth="180"
-                Margin="0,10,5,5"
+                Margin="5,10,5,5"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Center"
-                ClickMode="Hover">
+                ClickMode="Hover"
+                >
 
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <usercontrols:Clock FontSize="29" />
@@ -59,14 +60,14 @@
                         Command="{Binding Path=ViewModel.ShowHXJTCommand}"
                         Content="显示虹学讲堂"
                         FontSize="20" />
-
+                    <CheckBox IsChecked="{Binding Path=ViewModel.IsNeedTiming}" HorizontalAlignment="Center" Margin="5" Content="定时抢票"/>
                 </StackPanel>
             </ui:CardControl>
             <ui:CardControl
                 Grid.Row="1"
                 Height="Auto"
                 MinHeight="120"
-                Margin="0,5,5,10"
+                Margin="5,5,5,10"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Left"
@@ -74,7 +75,7 @@
                 ClickMode="Hover" />
             <TextBlock
                 Grid.Row="1"
-                Margin="0,5,5,10"
+                Margin="5,5,5,10"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Text="{Binding Path=ViewModel.Result}"
@@ -82,12 +83,12 @@
         </Grid>
         <ui:CardControl
             Grid.Column="1"
-            Margin="8,13,10,10"
+            Margin="8,10,10,10"
             VerticalAlignment="Stretch"
             ClickMode="Hover" />
         <ui:VirtualizingItemsControl
             Grid.Column="1"
-            Margin="5,10,10,10"
+            Margin="5,5,10,10"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
             Foreground="{DynamicResource TextFillColorSecondaryBrush}"

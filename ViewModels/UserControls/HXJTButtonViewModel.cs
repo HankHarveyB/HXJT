@@ -17,6 +17,7 @@ public partial class HXJTButtonViewModel : ObservableRecipient
         _snackbarService = App.GetService<ISnackbarService>();
         this.academicActivity = academicActivity;
     }
+    [Obsolete]
     private void ShowResult(string title, string info, Boolean IsSuccess)
     {
         var appearance = IsSuccess ? ControlAppearance.Success : ControlAppearance.Danger;

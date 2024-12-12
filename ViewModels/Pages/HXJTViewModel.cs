@@ -88,16 +88,30 @@ public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketRe
 
     public void Receive(AskTicketResultMessage message)
     {
-        this.Result = ("结果：" + '\n' + message.Value);
+        //this.Result = ("结果：" + '\n' + message.Value);
         App.Current.Dispatcher.Invoke(new Action(() =>
         {
-            this._snackbar.Show(
-                "Result",
-                message.Value,
-                ControlAppearance.Secondary,
-                new SymbolIcon(SymbolRegular.Fluent24),
-                TimeSpan.FromSeconds(1)
-            );
+            if (result.Contains("已报名") || result.Contains("成功"))
+            {
+                this._snackbar.Show(
+               "Result",
+               message.Value,
+               ControlAppearance.Success,
+               new SymbolIcon(SymbolRegular.Fluent24),
+               TimeSpan.FromSeconds(1)
+           );
+            }
+            else
+            {
+                this._snackbar.Show(
+                    "Result",
+                    message.Value,
+                    ControlAppearance.Caution,
+                    new SymbolIcon(SymbolRegular.Fluent24),
+                    TimeSpan.FromSeconds(1)
+                );
+            }
+            
         }
         ));
     }

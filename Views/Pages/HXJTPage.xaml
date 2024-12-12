@@ -25,7 +25,7 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <ui:CardControl
@@ -72,14 +72,29 @@
                 VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Top"
-                ClickMode="Hover" />
-            <TextBlock
+                ClickMode="Hover" >
+                <ListBox>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <WrapPanel>
+                                    <TextBlock/>
+                                    <TextBlock/>
+
+                                </WrapPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ui:CardControl>
+            <!--<TextBlock
                 Grid.Row="1"
                 Margin="5,5,5,10"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Text="{Binding Path=ViewModel.Result}"
-                TextWrapping="Wrap" />
+                TextWrapping="Wrap" />-->
+            
         </Grid>
         <ui:CardControl
             Grid.Column="1"

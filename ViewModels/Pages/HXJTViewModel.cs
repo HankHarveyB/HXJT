@@ -1,10 +1,13 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Threading;
 using CommunityToolkit.Mvvm.Messaging;
 using HXJT.Helpers;
 using HXJT.Messages;
 using HXJT.Models;
 using HXJT.ViewModels.UserControls;
 using HXJT.Views.Windows;
+using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace HXJT.ViewModels.Pages;
 public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketResultMessage>
@@ -24,9 +27,11 @@ public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketRe
     [ObservableProperty]
     private ObservableCollection<HXJTButtonViewModel>? hXJTButtonViewModels;//要显示在前台的学术活动
 
-    public HXJTViewModel()
+
+    public HXJTViewModel(ISnackbarService snackbar)
     {
         WeakReferenceMessenger.Default.Register<AskTicketResultMessage>(this);
+        _snackbar = snackbar;
     }
 
     [RelayCommand]
@@ -47,9 +52,18 @@ public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketRe
         this.HXJTButtonViewModels = new ObservableCollection<HXJTButtonViewModel>(buttonViewModellist);
     }
 
+    private readonly ISnackbarService _snackbar;
+
     [RelayCommand]
     private void ShowHXJT()
     {
+        //this._snackbar.Show(
+        //    "Don't Blame Yourself.",
+        //    "No Witcher's Ever Died In His Bed.",
+        //    ControlAppearance.Secondary,
+        //    new SymbolIcon(SymbolRegular.Fluent24),
+        //    TimeSpan.FromSeconds(1)
+        //);
         if (this.ActivitiesCollection != null)
         {
 
@@ -74,6 +88,17 @@ public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketRe
 
     public void Receive(AskTicketResultMessage message)
     {
-        this.Result = ("结果："+'\n' + message.Value);
+        this.Result = ("结果：" + '\n' + message.Value);
+        App.Current.Dispatcher.Invoke(new Action(() =>
+        {
+            this._snackbar.Show(
+                "Result",
+                message.Value,
+                ControlAppearance.Secondary,
+                new SymbolIcon(SymbolRegular.Fluent24),
+                TimeSpan.FromSeconds(1)
+            );
+        }
+        ));
     }
 }

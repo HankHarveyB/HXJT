@@ -46,7 +46,7 @@ public partial class HXJTButtonViewModel : ObservableRecipient
             for (i = 0; i < 4; i++)
             {
 
-                result =  HTTPHelper.AddTicket(this.AcademicActivity!.Id).Result;
+                result =  HTTPHelper.AddTicket(this.AcademicActivity!).Result;
                 if (result.Contains("已报名") || result.Contains("成功"))
                 {
                     isSuccess = true;
@@ -78,7 +78,7 @@ public partial class HXJTButtonViewModel : ObservableRecipient
         for (i = 0; i < 4; i++)
         {
 
-            result = await HTTPHelper.AddTicket(this.AcademicActivity!.Id);
+            result = await HTTPHelper.AddTicket(this.AcademicActivity!);
             if (result.Contains("已报名") || result.Contains("成功"))
             {
                 isSuccess = true;

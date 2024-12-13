@@ -13,7 +13,7 @@ namespace HXJT.ViewModels.Pages;
 public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketResultMessage>
 {
     [ObservableProperty]
-    private bool isNeedTiming = false;
+    private bool isNeedTiming = false;//是否需要定时抢票
     [ObservableProperty]
     private string result = "";
     [ObservableProperty]
@@ -27,6 +27,10 @@ public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketRe
     [ObservableProperty]
     private ObservableCollection<HXJTButtonViewModel>? hXJTButtonViewModels;//要显示在前台的学术活动
 
+    partial void OnIsNeedTimingChanged(bool value)
+    {
+        HTTPHelper.IsNeedTimer = value;
+    }
 
     public HXJTViewModel(ISnackbarService snackbar)
     {

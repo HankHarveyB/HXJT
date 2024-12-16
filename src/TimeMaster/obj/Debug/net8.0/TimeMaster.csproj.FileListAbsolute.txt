@@ -1,0 +1,12 @@
+C:\Code\C#\HXJT\src\TimeMaster\bin\Debug\net8.0\TimeMaster.deps.json
+C:\Code\C#\HXJT\src\TimeMaster\bin\Debug\net8.0\TimeMaster.dll
+C:\Code\C#\HXJT\src\TimeMaster\bin\Debug\net8.0\TimeMaster.pdb
+C:\Code\C#\HXJT\src\TimeMaster\obj\Debug\net8.0\TimeMaster.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\C#\HXJT\src\TimeMaster\obj\Debug\net8.0\TimeMaster.AssemblyInfoInputs.cache
+C:\Code\C#\HXJT\src\TimeMaster\obj\Debug\net8.0\TimeMaster.AssemblyInfo.cs
+C:\Code\C#\HXJT\src\TimeMaster\obj\Debug\net8.0\TimeMaster.csproj.CoreCompileInputs.cache
+C:\Code\C#\HXJT\src\TimeMaster\obj\Debug\net8.0\TimeMaster.sourcelink.json
+C:\Code\C#\HXJT\src\TimeMaster\obj\Debug\net8.0\TimeMaster.dll
+C:\Code\C#\HXJT\src\TimeMaster\obj\Debug\net8.0\refint\TimeMaster.dll
+C:\Code\C#\HXJT\src\TimeMaster\obj\Debug\net8.0\TimeMaster.pdb
+C:\Code\C#\HXJT\src\TimeMaster\obj\Debug\net8.0\ref\TimeMaster.dll

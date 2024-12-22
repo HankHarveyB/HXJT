@@ -22,6 +22,8 @@ public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketRe
     [ObservableProperty]
     private ObservableCollection<AcademicActivity>? activitiesCollection;//所有的学术活动
 
+    [ObservableProperty]
+    private ObservableCollection<string> addedTimerTicket=new();
     //[ObservableProperty]
     //private ObservableCollection<AcademicActivity>? activitiesCollectionShow;//要显示在前台的学术活动
     [ObservableProperty]
@@ -36,6 +38,23 @@ public partial class HXJTViewModel : ObservableRecipient, IRecipient<AskTicketRe
     {
         WeakReferenceMessenger.Default.Register<AskTicketResultMessage>(this);
         _snackbar = snackbar;
+        HTTPHelper.TickedAdded += (name) =>
+        {
+            App.Current.Dispatcher.Invoke(
+                ()=>
+                {
+                    if (this.AddedTimerTicket.Contains(name)==false)
+                    {
+                    this.AddedTimerTicket.Add(name);
+                    }
+                }
+                );
+            
+        };
+        HTTPHelper.TicketTasksHasChanged += (name, info) =>
+        {
+            this.AddedTimerTicket.Remove(name);
+        };
     }
 
     [RelayCommand]

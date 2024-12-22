@@ -70,22 +70,28 @@
                 Margin="5,5,5,10"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                HorizontalContentAlignment="Left"
+                HorizontalContentAlignment="Center"
                 VerticalContentAlignment="Top"
                 ClickMode="Hover" >
-                <ListBox>
-                    <ListBox.ItemTemplate>
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="已预约抢票"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" CanContentScroll="True" PanningMode="VerticalOnly">
+                        
+                    <ListBox ItemsSource="{Binding Path=ViewModel.AddedTimerTicket}">
+                    <!--<ListBox.ItemTemplate>
                         <DataTemplate>
-                            <Border>
+                            <Border Opacity="50">
                                 <WrapPanel>
-                                    <TextBlock/>
-                                    <TextBlock/>
+                                    <TextBlock Text="{Binding}"/>
+                                   
 
                                 </WrapPanel>
                             </Border>
                         </DataTemplate>
-                    </ListBox.ItemTemplate>
+                    </ListBox.ItemTemplate>-->
                 </ListBox>
+                    </ScrollViewer>
+                </StackPanel>
             </ui:CardControl>
             <!--<TextBlock
                 Grid.Row="1"

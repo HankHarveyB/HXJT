@@ -27,6 +27,7 @@ public class HTTPHelper
         }
         return result;
     }
+    public static event Action<string,string> TicketTasksHasChanged= delegate { };
     /// <summary>
     /// 获取学术活动的List
     /// </summary>
@@ -110,6 +111,72 @@ public class HTTPHelper
         get;
         set;
     }= false;
+
+    public static void AddTimerTicket(AcademicActivity academicActivity)
+    {
+        var id = academicActivity.Id;
+        var master = App.GetService<TimeMaster.TimeMaster>();
+        var starttime = DateTime.Parse(academicActivity.AcademicStarttime.ToString());
+        starttime = DateTime.Now.AddSeconds(5);
+        master.Add(academicActivity.AcademicName, DateTime.Parse(academicActivity.AcademicStarttime),
+            () =>
+            {
+                try
+                {
+                    using (HttpClient client = new HttpClient())
+                    {
+                        // 构造请求头
+                        client.DefaultRequestHeaders.Add("Accept", "application/json, text/plain, */*");
+                        client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");
+                        client.DefaultRequestHeaders.Add("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6");
+                        client.DefaultRequestHeaders.Add("Authorization", UserInfo.Authorization);
+                        client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                        client.DefaultRequestHeaders.Add("DNT", "1");
+                        client.DefaultRequestHeaders.Add("Host", "xshd.chd.edu.cn");
+                        client.DefaultRequestHeaders.Add("Origin", "http://xshd.chd.edu.cn");
+                        client.DefaultRequestHeaders.Add("Referer", "http://xshd.chd.edu.cn");
+                        client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0");
+                        client.DefaultRequestHeaders.Add("Cookie", "hb_MA-B701-2FC93ACD9328_source=entryhz.qiye.163.com");
+
+                        var formData = new Dictionary<string, string>
+        {
+                {"academicId", id.ToString()},
+                {"token", UserInfo.Authorization!}
+        };
+
+                        var content = new FormUrlEncodedContent(formData);
+
+                        // 发起POST请求
+                        HttpResponseMessage response = client.PostAsync("http://xshd.chd.edu.cn/teunk/project/academicregistration/add", content).Result;
+
+                        var responseString = response.Content.ReadAsStringAsync().Result;
+                        string msgPattern = "\"msg\":\"(.*?)\"";
+                        Match match = Regex.Match(responseString, msgPattern);
+
+                        if (match.Success)
+                        {
+                            return match.Groups[1].Value;
+                        }
+                        else
+                        {
+                            return "未匹配到正确的msg";
+                        }
+                        // 处理响应
+                        //return await response.Content.ReadAsStringAsync();
+                    }
+                }
+                catch (Exception)
+                {
+
+                    return "error";
+                }
+            },
+            o =>
+            {
+                TicketTasksHasChanged.Invoke(academicActivity.AcademicName, o.ToString()!);
+            }
+            );
+    }
     public static async Task<string> AddTicket(AcademicActivity academicActivity)
     {
         var id =academicActivity.Id;
@@ -173,7 +240,69 @@ public class HTTPHelper
         }
         else
         {
-            return "还未开发";
+            
+            var master = App.GetService<TimeMaster.TimeMaster>();
+            var starttime = DateTime.Parse(academicActivity.AcademicStarttime.ToString());
+            starttime = DateTime.Now.AddSeconds(5);
+            master.Add(academicActivity.AcademicName, DateTime.Parse(academicActivity.AcademicStarttime),
+                () =>
+                {
+                    try
+                    {
+                        using (HttpClient client = new HttpClient())
+                        {
+                            // 构造请求头
+                            client.DefaultRequestHeaders.Add("Accept", "application/json, text/plain, */*");
+                            client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip, deflate");
+                            client.DefaultRequestHeaders.Add("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6");
+                            client.DefaultRequestHeaders.Add("Authorization", UserInfo.Authorization);
+                            client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                            client.DefaultRequestHeaders.Add("DNT", "1");
+                            client.DefaultRequestHeaders.Add("Host", "xshd.chd.edu.cn");
+                            client.DefaultRequestHeaders.Add("Origin", "http://xshd.chd.edu.cn");
+                            client.DefaultRequestHeaders.Add("Referer", "http://xshd.chd.edu.cn");
+                            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0");
+                            client.DefaultRequestHeaders.Add("Cookie", "hb_MA-B701-2FC93ACD9328_source=entryhz.qiye.163.com");
+
+                            var formData = new Dictionary<string, string>
+            {
+                {"academicId", id.ToString()},
+                {"token", UserInfo.Authorization!}
+            };
+
+                            var content = new FormUrlEncodedContent(formData);
+
+                            // 发起POST请求
+                            HttpResponseMessage response =  client.PostAsync("http://xshd.chd.edu.cn/teunk/project/academicregistration/add", content).Result;
+
+                            var responseString =  response.Content.ReadAsStringAsync().Result;
+                            string msgPattern = "\"msg\":\"(.*?)\"";
+                            Match match = Regex.Match(responseString, msgPattern);
+
+                            if (match.Success)
+                            {
+                                return match.Groups[1].Value;
+                            }
+                            else
+                            {
+                                return "未匹配到正确的msg";
+                            }
+                            // 处理响应
+                            //return await response.Content.ReadAsStringAsync();
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        return "error";
+                    }
+                },
+                o =>
+                {
+                    TicketTasksHasChanged.Invoke(academicActivity.AcademicName,o.ToString()!);
+                }
+                );
+            return "ok";
 
 
         }

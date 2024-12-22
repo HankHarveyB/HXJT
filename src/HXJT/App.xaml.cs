@@ -16,6 +16,7 @@ using HXJT.Views.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TimeMaster;
 
 namespace HXJT;
 /// <summary>
@@ -40,6 +41,7 @@ public partial class App
             services.AddSingleton<INavigationService, NavigationService>();
             services.AddSingleton<ISnackbarService, SnackbarService>();
             services.AddSingleton<IContentDialogService, ContentDialogService>();
+            services.AddSingleton<TimeMaster.TimeMaster>();
 
             services.AddSingleton<HXJTPage>();
             services.AddSingleton<HXJTViewModel>();

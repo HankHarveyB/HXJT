@@ -31,7 +31,7 @@ public partial class HXJTButtonViewModel : ObservableRecipient
         );
     }
     /// <summary>
-    /// 不可用
+    /// 可用
     /// </summary>
     [RelayCommand]
     private void AskForTicketMultiThread()
@@ -42,27 +42,40 @@ public partial class HXJTButtonViewModel : ObservableRecipient
             var isSuccess = false;
             var result = "";
             //ShowResult("正在抢票···", "", true);
-            int i;
-            for (i = 0; i < 4; i++)
-            {
 
-                result =  HTTPHelper.AddTicket(this.AcademicActivity!).Result;
-                if (result.Contains("已报名") || result.Contains("成功"))
-                {
-                    isSuccess = true;
-                    i++;
-                    break;
-                }
-            }
-            if (isSuccess)
+            if (HTTPHelper.IsNeedTimer==false)
             {
-                WeakReferenceMessenger.Default.Send<AskTicketResultMessage>(new AskTicketResultMessage(this.AcademicActivity.AcademicName+'\n'+result+'\n'+"共发起了" + (i) + "次抢票请求"));
-                //show(result!, "共发起了" + (i) + "次抢票请求", true);
+                int i;
+                for (i = 0; i < 4; i++)
+                {
+
+                    result = HTTPHelper.AddTicket(this.AcademicActivity!).Result;
+                    if (result.Contains("已报名") || result.Contains("成功"))
+                    {
+                        isSuccess = true;
+                        i++;
+                        break;
+                    }
+                }
+                if (isSuccess)
+                {
+                    WeakReferenceMessenger.Default.Send<AskTicketResultMessage>(new AskTicketResultMessage(this.AcademicActivity.AcademicName + '\n' + result + '\n' + "共发起了" + (i) + "次抢票请求"));
+                    //show(result!, "共发起了" + (i) + "次抢票请求", true);
+                }
+                else
+                {
+                    WeakReferenceMessenger.Default.Send<AskTicketResultMessage>(new AskTicketResultMessage(this.AcademicActivity.AcademicName + '\n' + result + '\n' + "共发起了" + (i) + "次抢票请求"));
+                    //show(result!, "共发起了" + (i) + "次抢票请求", false);
+                }
             }
             else
             {
-                WeakReferenceMessenger.Default.Send<AskTicketResultMessage>(new AskTicketResultMessage(this.AcademicActivity.AcademicName + '\n' + result + '\n' + "共发起了" + (i) + "次抢票请求"));
-                //show(result!, "共发起了" + (i) + "次抢票请求", false);
+                HTTPHelper.AddTimerTicket(this.AcademicActivity!);
+                HTTPHelper.TicketTasksHasChanged += (name, info) =>
+                {
+                    WeakReferenceMessenger.Default.Send<AskTicketResultMessage>(new AskTicketResultMessage(name  + '\n' + info + '\n' ));
+
+                };
             }
         });
 

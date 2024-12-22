@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TimeMaster")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7dd66bb4dc3d25c7c6919879fc9850cf9bc3d7f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bba0a93caf9becdf4bec26bb286b7879cef07de5")]
 [assembly: System.Reflection.AssemblyProductAttribute("TimeMaster")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TimeMaster")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

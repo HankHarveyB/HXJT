@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMaster", "..\TimeMaster
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank", "..\Bank\Bank.csproj", "{482B2BCF-D75E-4834-9E9C-D76262C83502}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTests", "..\BankTests\BankTests.csproj", "{84C7DA5B-68F6-4845-A5FB-4A60B697D860}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeMasterTest", "..\TimeMasterTest\TimeMasterTest.csproj", "{476E605F-AB48-4271-A7B3-74E592910196}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{482B2BCF-D75E-4834-9E9C-D76262C83502}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{482B2BCF-D75E-4834-9E9C-D76262C83502}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{482B2BCF-D75E-4834-9E9C-D76262C83502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84C7DA5B-68F6-4845-A5FB-4A60B697D860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84C7DA5B-68F6-4845-A5FB-4A60B697D860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84C7DA5B-68F6-4845-A5FB-4A60B697D860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84C7DA5B-68F6-4845-A5FB-4A60B697D860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{476E605F-AB48-4271-A7B3-74E592910196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476E605F-AB48-4271-A7B3-74E592910196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476E605F-AB48-4271-A7B3-74E592910196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{476E605F-AB48-4271-A7B3-74E592910196}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
